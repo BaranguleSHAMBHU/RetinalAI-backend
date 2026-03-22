@@ -7,11 +7,14 @@ import io
 from PIL import Image
 
 app = FastAPI(title="RetinalAI Disease Classifier API")
+origins = [
+    "http://localhost:3000",
+    "https://retinal-ai.vercel.app" 
+]
 
-# Allow your Next.js frontend (running on port 3000) to communicate with this backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], 
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
